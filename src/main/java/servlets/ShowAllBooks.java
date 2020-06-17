@@ -36,19 +36,15 @@ public class ShowAllBooks extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * 
      */
-    
-    
+  
     @Override
-    public void init(ServletConfig config)
-            throws ServletException {
+    public void init() throws ServletException {
         try {
-            new UseDB();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ShowAllBooks.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+            UseDB db = new UseDB();
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ShowAllBooks.class.getName()).log(Level.SEVERE, null, ex);
         }
-        super.init(config); //To change body of generated methods, choose Tools | Templates.
+        super.init(); //To change body of generated methods, choose Tools | Templates.
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
@@ -58,14 +54,14 @@ public class ShowAllBooks extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-              ArrayList<Book> availableBooks = UseDB.getBooks();
-              
-              request.setAttribute("books", availableBooks);
+            ArrayList<Book> availableBooks = UseDB.getBooks();
+            
+            request.setAttribute("books", availableBooks);
 //            ArrayList<Book> availableNooks
-                
-            RequestDispatcher rd=request.getRequestDispatcher("ShowAllBooks.jsp");  
-            //servlet2 is the url-pattern of the second servlet  
-  
+
+            RequestDispatcher rd=request.getRequestDispatcher("admin_home.jsp");
+//servlet2 is the url-pattern of the second servlet
+
             rd.forward(request, response);//method may be include or forward  
 
 

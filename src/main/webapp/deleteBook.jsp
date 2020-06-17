@@ -91,7 +91,7 @@
             <a href=""><i class="material-icons blue-text">email</i> <%= email %></a>
         </li>
         <li>
-            <a href="addBook.jsp"><i class="material-icons blue-text">add_box</i>AddBooks </a>
+            <a href="AddBook"><i class="material-icons blue-text">add_box</i>AddBooks </a>
         </li>
         <li>
 
@@ -124,46 +124,49 @@
 
     <!--SideNav Finished-->
     
-   <div class="content">
-        <div class="row">
-            <v:forEach var="user" items="${users}">  
-            <div class="col s12 l4 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="img/img1.jpg" />
-                        <span class="card-title">User</span>
-                    </div>
-                    <div class="card-content">
-                        <ul class="collection with-header">
-                            <li class="collection-header">
-                                <h4>User Information</h4>
-                            </li>
-                            <li class="collection-item">
-                                <div class="red-text"><b class="blue-text">userName:  </b><b>${user.userName}</b><a href="#!" class="secondary-content"><i
-                                            class="material-icons">send</i></a>
+   
+    <div class="content">
+        <div class="row" id="show01">
+            <div class="row">
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content blue-text">
+                    <div class="row">
+                        <form class="col s12" action="DeleteBook" method="POST">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">book</i>
+                                    <input id="icon_prefix" type="text" class="validate" name="bookId">
+                                    <label for="icon_prefix">bookId</label>
                                 </div>
-                            </li>
-                            <li class="collection-item">
-                                <div class="red-text"><b class="blue-text">firstName:  </b><b>${user.firstName}</b><a href="#!" class="secondary-content"><i
-                                            class="material-icons">send</i></a>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">mode_comment</i>
+                                    <input id="icon_telephone" type="tel" class="validate" name="bookName">
+                                    <label for="icon_telephone">bookName</label>
                                 </div>
-                            </li>
-                            <li class="collection-item">
-                                <div class="red-text"><b class="blue-text">lastName:  </b><b>${user.lastName}</b><a href="#!" class="secondary-content"><i
-                                            class="material-icons">send</i></a>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">info</i>
+                                    <input id="icon_telephone" type="submit" value="submit">
+                                    <label for="icon_telephone">submit</label>
                                 </div>
-                            </li>
+                            </div>
                             
-                           
-                        </ul>
-<!--                        <p style="margin-left: 5px;">Description:</p>-->
+                        </form>
+                    </div>
+                    
+                    <div class="card-action">
+                        <a href="deleteBook.jsp" class="btn">Remove More Books</a>
+                        <a href="AdminHomeBooks" class="btn">Home</a>
                     </div>
                 </div>
             </div>
-        </v:forEach>
+        </div>
+
+
+
+
         </div>
     </div>
-    
     <!-- 
     
 <div class="fixed-action-btn">
@@ -173,6 +176,7 @@
     <!-- Import jQuery before materialize.js -->
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
+           
     <script>
         $(document).ready(function () {
             // Custom JS & jQuery here

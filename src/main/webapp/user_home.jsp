@@ -57,12 +57,12 @@
         </ul>
         </div>
     </nav>
-        <!--% User user=(User)((session.getAttribute("user")));
+        <% User user=(User)((session.getAttribute("user")));
                 String userName=user.getUserName().toString();
                 String name=user.getFirstName().toString()+user.getLastName().toString();
                 String email=user.getEmail().toString();
         
-                %-->
+                %>
     <ul class=" side-nav fixed" id="sidenav">
         <li>
             <!-- <div class="user-view"> -->
@@ -75,39 +75,40 @@
             </div>
         </li>
         <li>
-            <a href="" class="tooltipped" data-position="top" data-tooltip="<!--%= userName %-->"><i
-                    class="material-icons blue-text">person</i><!--%= name %-->
+            <a href="" class="tooltipped" data-position="top" data-tooltip="<%= userName %>"><i
+                    class="material-icons blue-text">person</i><%= name %>
             </a>
         </li>
 
         <li>
-            <a href=""><i class="material-icons blue-text">email</i><!-%= email %--></a>
+            <a href=""><i class="material-icons blue-text">email</i><%= email %></a>
         </li>
         <li>
-            <a href=""><i class="material-icons blue-text">book</i>IssueBook </a>
+            <a href="IssueBooks"><i class="material-icons blue-text">book</i>IssueBook </a>
         </li>
         <li>
             <a href="ShowIsuedBooks"><i class="material-icons blue-text">rate_review</i>See Books
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons blue-text">delete_forever</i>Return Book
+            <a href="ReturnBooks"><i class="material-icons blue-text">delete_forever</i>Return Book
             </a>
         </li>
         <div class="divider"></div>
 
         <li>
-            <a href=""><i class="material-icons blue-text">help</i>Help </a>
+            <a href="help.jsp"><i class="material-icons blue-text">help</i>Help </a>
         </li>
         <li>
-            <a href=""><i class="material-icons blue-text">exit_to_app</i>Logout
+            <a href="LogOut"><i class="material-icons blue-text">exit_to_app</i>Logout
             </a>
         </li>
     </ul>
 
     <!--SideNav Finished-->
     <div class="content">
-        <div class="row">
+        <div class="row" id="show01">
+            <v:forEach var="book" items="${books}">  
             <div class="col s12 l4 m4">
                 <div class="card">
                     <div class="card-image">
@@ -120,37 +121,38 @@
                                 <h4>BOOK Information</h4>
                             </li>
                             <li class="collection-item">
-                                <div>BOOKID:<a href="#!" class="secondary-content"><i
+                                <div class="red-text"><b class="blue-text">bookId:  </b><b>${book.bookId}</b><a href="#!" class="secondary-content"><i
                                             class="material-icons">send</i></a>
                                 </div>
                             </li>
                             <li class="collection-item">
-                                <div>BOOKNAMe:<a href="#!" class="secondary-content"><i
+                                <div class="red-text"><b class="blue-text">bookName:  </b><b>${book.bookName}</b><a href="#!" class="secondary-content"><i
                                             class="material-icons">send</i></a>
                                 </div>
                             </li>
                             <li class="collection-item">
-                                <div>Category<a href="#!" class="secondary-content"><i
+                                <div class="red-text"><b class="blue-text">category:  </b><b>${book.category}</b><a href="#!" class="secondary-content"><i
                                             class="material-icons">send</i></a>
                                 </div>
                             </li>
                             <li class="collection-item">
-                                <div>Author:<a href="#!" class="secondary-content"><i
+                                <div class="red-text"><b class="blue-text">Author: </b><b>${book.author}</b><a href="#!" class="secondary-content"><i
                                             class="material-icons">send</i></a>
                                 </div>
                             </li>
                             <li class="collection-item">
-                                <div>Availbility:<a href="#!" class="secondary-content"><i
+                                <div class="red-text"><b class="blue-text">publisher:</b><b>${book.publisher}</b><a href="#!" class="secondary-content"><i
                                             class="material-icons">send</i></a>
                                 </div>
                             </li>
                         </ul>
-                        <p style="margin-left: 5px;">Description:</p>
+<!--                        <p style="margin-left: 5px;">Description:</p>-->
                     </div>
                 </div>
             </div>
-            </div>
+                            </v:forEach>
         </div>
+    </div>
     <!-- 
     
 <div class="fixed-action-btn">

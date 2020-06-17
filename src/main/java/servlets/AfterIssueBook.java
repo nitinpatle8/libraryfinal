@@ -52,20 +52,23 @@ public class AfterIssueBook extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String[] names = request.getParameterValues("books");
+            String[] bookIds = request.getParameterValues("books");
             
-            ArrayList<String> bookIssuedList = (ArrayList<String>) Arrays.asList(names);
+            ArrayList<String> bookIssuedList = new ArrayList<String>();
+            
+            for(int i=0; i<bookIds.length; i++){
+                bookIssuedList.add(bookIds[i]);
+            }
+            
             
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             
             String username = user.getUserName();
-            
-            for (String bookIssuedList1 : bookIssuedList) {
-                UseDB.setAvailableList(username, bookIssuedList);
-            }
-            
             user.setBooksIssued(bookIssuedList);
+            
+            UseDB.setAvailableList(username, bookIssuedList);
+
             session.setAttribute("user", user);
             
             response.sendRedirect("UserHomeBooks");

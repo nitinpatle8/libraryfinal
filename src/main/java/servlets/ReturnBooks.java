@@ -70,7 +70,7 @@ public class ReturnBooks extends HttpServlet {
 
             session.setAttribute("user", user);
             
-            response.sendRedirect("user_login");
+            response.sendRedirect("UserHomeBooks");
    
         }
     }

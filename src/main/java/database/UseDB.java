@@ -9,6 +9,7 @@ import beans.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  *
@@ -418,16 +419,19 @@ public class UseDB {
             
             ResultSet rs = ps.executeQuery();
             
-            String[] bookIssued = rs.getString("booksIssued").split(",");
+            if(rs.next()){
+                String[] bookIssued = rs.getString("booksIssued").split(",");
             
-            if(bookIssued.length == 0){
-                final String removeQuery = "DELETE FROM User WHERE userName = ?";
-                ps = connect.prepareStatement(removeQuery);
-                ps.setString(1, username);
-                
-                ps.executeUpdate();
-                return true;
+                if(bookIssued.length == 0){
+                    final String removeQuery = "DELETE FROM User WHERE userName = ?";
+                    ps = connect.prepareStatement(removeQuery);
+                    ps.setString(1, username);
+
+                    ps.executeUpdate();
+                    return true;
+                }
             }
+            
             
             return false;
         }
@@ -519,7 +523,7 @@ public class UseDB {
                     bookIssued = "";
                     for(int i = 0; i< bookId.size(); i++)
                     {
-                        bookIssued = bookId.get(i) + ",";
+                        bookIssued = bookIssued + bookId.get(i) + ",";
                     } 
                 }
                 ps.setString(1, bookIssued);
@@ -668,14 +672,19 @@ public class UseDB {
             Statement state = connect.createStatement();
             
             ResultSet rs = state.executeQuery(query);
-            
+//            System.out.println("outside rs next");
             while(rs.next()){
                 
+//                System.out.println("inside rs.next");
                 String[] bookIssued;
                 bookIssued = rs.getString("booksIssued").split(",");
+//                System.out.println("after split string");
                 
-                ArrayList<String> bookIssuedList = (ArrayList<String>) Arrays.asList(bookIssued);
-                
+                ArrayList<String> bookIssuedList = new ArrayList<String>();
+                for(int i = 0; i<bookIssued.length; i++){
+                    bookIssuedList.add(bookIssued[i]);
+                }
+
                 userArr.add(new User(rs.getString(1), rs.getString(2), rs.getString(3),
                 rs.getString(4), rs.getString(5), rs.getString(6), bookIssuedList));
                 
@@ -685,7 +694,7 @@ public class UseDB {
         }
         catch(Exception e){
             System.out.println("getUsers exception caught");
-            return null;
+            return userArr;
         }
     }
     
@@ -734,7 +743,11 @@ public class UseDB {
                     
                     String[] bookIssued = rs.getString("booksIssued").split(",");
                     
-                    ArrayList<String> bookIssuedList = (ArrayList<String>) Arrays.asList(bookIssued);
+                    ArrayList<String> bookIssuedList = new ArrayList<String>();
+                    
+                    for(int i = 0; i<bookIssued.length; i++){
+                        bookIssuedList.add(bookIssued[i]);
+                    }
                     
                     for(int i = 0; i < bookId.size(); i++){
                         bookIssuedList.add(bookId.get(i));

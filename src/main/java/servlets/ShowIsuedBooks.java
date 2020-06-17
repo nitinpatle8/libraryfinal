@@ -32,6 +32,7 @@ public class ShowIsuedBooks extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
+     * @param config
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -44,10 +45,8 @@ public class ShowIsuedBooks extends HttpServlet {
     public void init(ServletConfig config)
             throws ServletException {
         try {
-            new UseDB();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ShowAllBooks.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+            UseDB useDB = new UseDB();
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ShowAllBooks.class.getName()).log(Level.SEVERE, null, ex);
         }
         super.init(config); //To change body of generated methods, choose Tools | Templates.

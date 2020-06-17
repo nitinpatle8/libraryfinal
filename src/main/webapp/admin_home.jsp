@@ -95,29 +95,29 @@
         </li>
         <li>
 
-            <a href="ShowAllBooks"><i class="material-icons blue-text">rate_review</i>See Books
+            <a href="AdminHomeBooks"><i class="material-icons blue-text">rate_review</i>See Books
 
-                <a href="#"><i class="material-icons blue-text">library_books</i>See Books
+
 
             </a>
         </li>
         <li>
-            <a href="#"><i class="material-icons blue-text">people</i>Show Users </a>
+            <a href="ShowAllUsers"><i class="material-icons blue-text">people</i>Show Users </a>
         </li>
         <li>
-            <a href=""><i class="material-icons blue-text">delete_forever</i>DeleteBook
+            <a href="deleteBook.jsp"><i class="material-icons blue-text">delete_forever</i>DeleteBook
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons blue-text">clear</i>DeleteUser</a>
+            <a href="deleteUser.jsp"><i class="material-icons blue-text">clear</i>DeleteUser</a>
         </li>
         <div class="divider"></div>
 
         <li>
-            <a href=""><i class="material-icons blue-text">help</i>Help </a>
+            <a href="help.jsp"><i class="material-icons blue-text">help</i>Help </a>
         </li>
         <li>
-            <a href=""><i class="material-icons blue-text">exit_to_app</i>Logout
+            <a href="LogOut"><i class="material-icons blue-text">exit_to_app</i>Logout
             </a>
         </li>
     </ul>
@@ -127,7 +127,7 @@
    
     <div class="content">
         <div class="row" id="show01">
-            <v:forEach var="book" items="${books}">"+    
+            <v:forEach var="book" items="${books}">  
             <div class="col s12 l4 m4">
                 <div class="card">
                     <div class="card-image">

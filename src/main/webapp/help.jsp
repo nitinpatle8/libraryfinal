@@ -105,11 +105,11 @@
             <a href="ShowAllUsers"><i class="material-icons blue-text">people</i>Show Users </a>
         </li>
         <li>
-            <a href=""><i class="material-icons blue-text">delete_forever</i>DeleteBook
+            <a href="deleteBook.jsp"><i class="material-icons blue-text">delete_forever</i>DeleteBook
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons blue-text">clear</i>DeleteUser</a>
+            <a href="deleteUser.jsp"><i class="material-icons blue-text">clear</i>DeleteUser</a>
         </li>
         <div class="divider"></div>
 
@@ -122,48 +122,38 @@
         </li>
     </ul>
 
-    <!--SideNav Finished-->
-    
-   <div class="content">
-        <div class="row">
-            <v:forEach var="user" items="${users}">  
-            <div class="col s12 l4 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="img/img1.jpg" />
-                        <span class="card-title">User</span>
-                    </div>
-                    <div class="card-content">
-                        <ul class="collection with-header">
-                            <li class="collection-header">
-                                <h4>User Information</h4>
-                            </li>
-                            <li class="collection-item">
-                                <div class="red-text"><b class="blue-text">userName:  </b><b>${user.userName}</b><a href="#!" class="secondary-content"><i
-                                            class="material-icons">send</i></a>
-                                </div>
-                            </li>
-                            <li class="collection-item">
-                                <div class="red-text"><b class="blue-text">firstName:  </b><b>${user.firstName}</b><a href="#!" class="secondary-content"><i
-                                            class="material-icons">send</i></a>
-                                </div>
-                            </li>
-                            <li class="collection-item">
-                                <div class="red-text"><b class="blue-text">lastName:  </b><b>${user.lastName}</b><a href="#!" class="secondary-content"><i
-                                            class="material-icons">send</i></a>
-                                </div>
-                            </li>
-                            
-                           
-                        </ul>
-<!--                        <p style="margin-left: 5px;">Description:</p>-->
+
+    <div class="content">
+        <div class="row" >
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content blue-text">
+                    <p>HTML (Hypertext Markup Language) is a web markup language that allows you to create web pages.
+                        While HTML is an easy to
+                        learn markup language, it does contain over a hundred different tags that can be learned.
+
+                        Like other markup languages, HTML consists of tags that let the browser know what action to
+                        perform. For example,
+                        <b>bold text</b> tells the browser the text in the <b> and </b> is bold text. Being a markup
+                        language, HTML does not
+                        need to be compiled and required no special editor. You can write HTML in any text editor or use
+                        an HTML editor designed
+                        for creating web pages.
+
+                        Also, because it's your browser interpreting the HTML, you can view all HTML pages on your
+                        computer without needing a
+                        server or uploading them to the Internet. Once familiarized with HTML tags, see where to start
+                        in HTML and web design
+                        for help with creating a web page and posting it online.</p>
+                    <div class="card-action">
+                         
+                        <a href="AdminHomeBooks" class="btn">Home</a>
+
                     </div>
                 </div>
             </div>
-        </v:forEach>
         </div>
-    </div>
-    
+        </div>
     <!-- 
     
 <div class="fixed-action-btn">
@@ -200,3 +190,7 @@
     <%--</v:if>--%>
 </body>
 </html>
+
+
+
+
